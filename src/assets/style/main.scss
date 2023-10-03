@@ -1,0 +1,29 @@
+@import './reset.scss';
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+.header {
+    height: 60px;
+    background-color: #ecf9ff;
+    h1 {
+        color: #060640;
+        font-weight: 700;
+        cursor: pointer;
+    }
+}
+
+.main {
+    min-height: calc(100svh - 15svh - 60px);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+footer {
+    height: 15svh;
+    background-color: #060640;
+}
