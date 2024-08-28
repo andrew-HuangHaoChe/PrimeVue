@@ -123,6 +123,11 @@ const weatherData = axios.get('https://opendata.cwb.gov.tw/api/v1/rest/datastore
     Authorization: 'CWA-208ADA4E-95CF-4D80-AB14-0CD2E7B74077',
   }
 })
+
+const monthChangeEvent = () => {
+  alert(123)
+}
+
 onMounted(async () => {
   ProductService.getProductsSmall().then((data) => (products.value = [data, []]));
   let response = await weatherData;
@@ -144,10 +149,15 @@ onMounted(async () => {
 <template>
   <main>
     <div class="container">
+      <Button>123</Button>
       <p>autoCompelete - 自動filter</p>
       <AutoComplete v-model="value" :suggestions="items" @complete="search" />
       <p>datePicker - 日期選擇器</p>
-      <Calendar v-model="dates" selectionMode="range" :manualInput="false" />
+      <Calendar @month-change="monthChangeEvent" v-model="dates" showIcon>
+        <template #header>
+          <Button>測試插槽塞按鈕</Button>
+        </template>
+      </Calendar>
       <p>CascadeSelect - 階層式選單</p>
       <CascadeSelect v-model="selectedCity" :options="countries" optionLabel="cname" optionGroupLabel="name"
         :optionGroupChildren="['states', 'cities']" style="min-width: 14rem;" placeholder="Select a City" />
